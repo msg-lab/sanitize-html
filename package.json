@@ -7,15 +7,12 @@
   "files": [
     "index.js"
   ],
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
-  },
   "scripts": {
     "test": "npx eslint . && mocha test/test.js"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:msg-lab/sanitize-html.git"
+    "url": "git+ssh://git@github.com/msg-lab/sanitize-html.git"
   },
   "keywords": [
     "html",
@@ -43,5 +40,12 @@
     "eslint-plugin-standard": "^4.0.1",
     "mocha": "^7.0.0",
     "sinon": "^9.0.2"
+  },
+  "bugs": {
+    "url": "https://github.com/msg-lab/sanitize-html/issues"
+  },
+  "homepage": "https://github.com/msg-lab/sanitize-html#readme",
+  "directories": {
+    "test": "test"
   }
 }
