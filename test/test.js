@@ -1476,30 +1476,18 @@ describe('sanitizeHtml', function() {
       }), '<iframe></iframe>'
     );
   });
-  it('should not automatically attach close tag when useAutoClosingTag option is false', function() {
-    assert.equal(sanitizeHtml('<test>Hello', {
-      disallowedTagsMode: 'discard',
-      useAutoClosingTag: true
-    }), 'Hello');
-    assert.equal(sanitizeHtml('<test>Hello', {
-      disallowedTagsMode: 'discard',
-      useAutoClosingTag: false
-    }), 'Hello');
-    assert.equal(sanitizeHtml('<test>Hello', {
-      disallowedTagsMode: 'escape',
-      useAutoClosingTag: true
-    }), '&lt;test&gt;Hello&lt;/test&gt;');
-    assert.equal(sanitizeHtml('<test>Hello', {
-      disallowedTagsMode: 'escape',
-      useAutoClosingTag: false
-    }), '&lt;test&gt;Hello');
-    assert.equal(sanitizeHtml('<test>Hello', {
-      disallowedTagsMode: 'recursiveEscape',
-      useAutoClosingTag: true
-    }), '&lt;test&gt;Hello&lt;/test&gt;');
-    assert.equal(sanitizeHtml('<test><test><test><test><test>Hello', {
-      disallowedTagsMode: 'recursiveEscape',
-      useAutoClosingTag: false
-    }), '&lt;test&gt;&lt;test&gt;&lt;test&gt;&lt;test&gt;&lt;test&gt;Hello');
+  it('should not allow closing tag if it is not a valid HTML tag', function () {
+    assert.equal(
+      sanitizeHtml('<test> Hello', {
+        disallowedTagsMode: 'escape'
+      }),
+      '&lt;test&gt; Hello'
+    );
+    assert.equal(
+      sanitizeHtml('<test> Hello </test>', {
+        disallowedTagsMode: 'escape'
+      }),
+      '&lt;test&gt; Hello'
+    );
   });
 });

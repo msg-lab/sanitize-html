@@ -577,7 +577,7 @@ function sanitizeHtml(html, options, _recursing) {
         return;
       }
 
-      if (options.useAutoClosingTag) {
+      if (sanitizeHtml.defaults.allowedTags.indexOf(name) !== -1) {
         result += '</' + name + '>';
       }
       if (skip) {
@@ -793,8 +793,7 @@ sanitizeHtml.defaults = {
   allowedSchemesByTag: {},
   allowedSchemesAppliedToAttributes: [ 'href', 'src', 'cite' ],
   allowProtocolRelative: true,
-  enforceHtmlBoundary: false,
-  useAutoClosingTag: true
+  enforceHtmlBoundary: false
 };
 
 sanitizeHtml.simpleTransform = function(newTagName, newAttribs, merge) {
