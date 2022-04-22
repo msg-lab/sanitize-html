@@ -1,6 +1,10 @@
-# sanitize-html
+# Fork of sanitize-html
 
 [![CircleCI](https://circleci.com/gh/apostrophecms/sanitize-html/tree/main.svg?style=svg)](https://circleci.com/gh/apostrophecms/sanitize-html/tree/main)
+
+<b>Important</b>: This is a modified version of the original <a href="https://github.com/apostrophecms/sanitize-html"  target="_blank">sanitize-html</a> library. The code is modified to disallow closing tag of non-HTML tag since the dependent library (htmlparser2) always tries to close any opened tags as per <a href="https://github.com/apostrophecms/sanitize-html/issues/464" target="_blank">this github issue</a>
+
+---
 
 <a href="https://apostrophecms.com/"><img src="https://raw.githubusercontent.com/apostrophecms/sanitize-html/main/logos/logo-box-madefor.png" align="right" /></a>
 
@@ -140,7 +144,6 @@ allowedSchemesByTag: {},
 allowedSchemesAppliedToAttributes: [ 'href', 'src', 'cite' ],
 allowProtocolRelative: true,
 enforceHtmlBoundary: false,
-useAutoClosingTag: true
 ```
 
 ### Common use cases
